@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Multi-targeting for maximum compatibility -->
+    <TargetFrameworks>netstandard2.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <PackageId>PQXDH</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Scott Kearney</Authors>
+    <Company>EnableYou, LLC</Company>
+    <Description>
+      A cross-platform implementation of the Post-Quantum Extended Diffie-Hellman (PQXDH) 
+      cryptographic protocol, which combines classical elliptic curve with post-quantum 
+      CRYSTALS-Kyber for future-proof encryption.
+    </Description>
+    <PackageTags>cryptography;post-quantum;pqxdh;kyber;encryption</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/EnableYou-LLC/PQXDH.NET</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <!-- Common dependencies for all target frameworks -->
+  <ItemGroup>
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.5.1" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+  </ItemGroup>
+
+  <!-- Dependencies specific to .NET Standard 2.0 -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Memory" Version="4.5.5" />
+  </ItemGroup>
+
+  <!-- Packaging -->
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+</Project>
